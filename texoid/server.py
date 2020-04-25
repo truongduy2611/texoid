@@ -24,7 +24,7 @@ class MainHandler(tornado.web.RequestHandler):
                 data = self.request.body
             result = yield self.backend.render(data)
             result['success'] = True
-            result['png'] = b64encode(result['png']).decode('ascii')
+            # result['png'] = b64encode(result['png']).decode('ascii')
             self.write(json.dumps(result))
         except Exception as error:
             logger.exception('failed to render input')
